@@ -7,7 +7,10 @@ public class Aircraft : MonoBehaviour
     public Transform cam;
     public Transform crosshair;
     public Transform ground;
+    public Transform missiles;
+    public Transform missileTemplate;
 
+    private Missile[] missilesRb = new Missile[2];
     private Rigidbody rb;
     private float thrust = 0F;
     private float thrustStep = 0.03F;
@@ -40,10 +43,23 @@ public class Aircraft : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.maxLinearVelocity = 1000F;
         rb.maxAngularVelocity = 0.5F;
+        
+        CreateMissiles();
     }
-    public void OnTriggerEnter(Collider other)
+
+    private void CreateMissiles()
     {
-        if (other.CompareTag(ground.tag) && !broken && rb.linearVelocity.magnitude > 2)
+        var leftMissile = Instantiate(missileTemplate, missiles);
+        var rightMissile = Instantiate(missileTemplate, missiles);
+        leftMissile.Translate(-2, 0, 0);
+        rightMissile.Translate(2, 0, 0);
+        missilesRb[0] = leftMissile.GetComponent<Missile>();
+        missilesRb[1] = rightMissile.GetComponent<Missile>();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag(ground.tag) && !broken && rb.linearVelocity.magnitude > 2)
         {
             DestroyAircraft();
         }
@@ -117,6 +133,11 @@ public class Aircraft : MonoBehaviour
             roll = roll > 0 ? Math.Max(0, roll - rollUnStep) : Math.Min(0, roll + pitchUnStep);
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            FireMissile();
+        }
+
         if (thrust != 0)
         {
             rb.AddForce(transform.forward * thrust, ForceMode.VelocityChange);
@@ -164,6 +185,28 @@ public class Aircraft : MonoBehaviour
         crosshair.position = new Vector3(crosshair.position.x, positionY, crosshair.position.z);
         Debug.Log("Thrust " + thrust + ", Yaw " + yaw + ", Pitch " + pitch + ", Roll " + roll + ", Vel " + rb.linearVelocity + " Target" + point);
 
+    }
+
+    private void FireMissile()
+    {
+        var launches = 0;
+        foreach (var missile in missilesRb)
+        {
+            if (missile.launched)
+            {
+                continue;
+            }
+            
+            missile.LaunchMissile();
+            launches++;
+            
+            break;
+        }
+
+        if (launches == 0)
+        {
+            CreateMissiles();
+        }
     }
 
     private void DestroyAircraft()

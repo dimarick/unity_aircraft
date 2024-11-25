@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Wall : MonoBehaviour
@@ -7,6 +6,7 @@ public class Wall : MonoBehaviour
     public Rigidbody brickRB;
     public int width = 200;
     public int height = 100;
+    public int depth = 10;
     private new BoxCollider collider;
 
     void Start()
@@ -15,24 +15,12 @@ public class Wall : MonoBehaviour
         {
             for (int j = 0; j < width; j++)
             {
-                var o = Instantiate(brick, transform);
-                o.position = new Vector3(j, i + 0.5F, -70);
+                for (int k = 0; k < depth; k++)
+                {
+                    var o = Instantiate(brick, transform);
+                    o.localPosition = new Vector3(i % 2 == 0 ? j : j + 0.5F, i + 0.5F, (i % 2 == 0 ? k : k + 0.5F));
+                }
             }
         }
-        brickRB = brick.GetComponent<Rigidbody>();
-        collider = GetComponent<BoxCollider>();
-        collider.size = new Vector3(width, height, 1);
-    }
-
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        brickRB.useGravity = true;
-        
-        Debug.Log("Use Gravity: true");
     }
 }
