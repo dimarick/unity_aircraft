@@ -676,8 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 8476824568477652191, guid: 5a3c7a85b61544f769cdb7e5931276b0, type: 3}
-  brickRB: {fileID: 0}
-  radius: 7
+  radius: 6
   height: 20
 --- !u!65 &846240935
 BoxCollider:
@@ -837,8 +836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 8476824568477652191, guid: 5a3c7a85b61544f769cdb7e5931276b0, type: 3}
-  brickRB: {fileID: 0}
-  radius: 7
+  radius: 6
   height: 20
 --- !u!65 &1062744093
 BoxCollider:
@@ -907,8 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 8476824568477652191, guid: 5a3c7a85b61544f769cdb7e5931276b0, type: 3}
-  brickRB: {fileID: 0}
-  radius: 7
+  radius: 6
   height: 20
 --- !u!65 &1111241225
 BoxCollider:
@@ -991,8 +988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 8476824568477652191, guid: 5a3c7a85b61544f769cdb7e5931276b0, type: 3}
-  brickRB: {fileID: 0}
-  width: 40
+  width: 20
   height: 10
   depth: 3
 --- !u!1 &1402567637
@@ -1385,10 +1381,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 8476824568477652191, guid: 5a3c7a85b61544f769cdb7e5931276b0, type: 3}
-  brickRB: {fileID: 0}
-  width: 7
+  width: 5
   height: 20
-  depth: 7
+  depth: 5
 --- !u!4 &1741381190
 Transform:
   m_ObjectHideFlags: 0
@@ -1435,7 +1430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 8476824568477652191, guid: 5a3c7a85b61544f769cdb7e5931276b0, type: 3}
-  brickRB: {fileID: 0}
   radius: 10
   height: 25
 --- !u!65 &1764739258
@@ -1857,7 +1851,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 8476824568477652191, guid: 5a3c7a85b61544f769cdb7e5931276b0, type: 3}
-  brickRB: {fileID: 0}
   radius: 7
   height: 20
 --- !u!1660057539 &9223372036854775807

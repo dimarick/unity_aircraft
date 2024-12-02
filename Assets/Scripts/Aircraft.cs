@@ -214,32 +214,4 @@ public class Aircraft : MonoBehaviour
         broken = true;
         rb.useGravity = true;
     }
-
-    private void OnDrawGizmos()
-    {
-        if (!Application.isPlaying) return;
-
-        var position = transform.position;
-        var velocity = rb.linearVelocity;
-
-        if (velocity.magnitude > 0)
-        {
-            Handles.color = Color.red;
-            Handles.ArrowHandleCap(0, position, Quaternion.LookRotation(velocity), rb.linearVelocity.magnitude, EventType.Repaint);
-        }
-        
-        Handles.color = Color.blue;
-        Handles.ArrowHandleCap(0, position, Quaternion.LookRotation(transform.forward), 10.0F, EventType.Repaint);
-
-        Handles.color = Color.green;
-        Handles.ArrowHandleCap(0, position, Quaternion.LookRotation(transform.up), 10.0F, EventType.Repaint);
-    }
-
-    /**
-     * Возведение в квадрат с сохранением знака
-     */
-    private float SignedSquare(float x)
-    {
-        return Math.Sign(x) * x * x;
-    }
 }

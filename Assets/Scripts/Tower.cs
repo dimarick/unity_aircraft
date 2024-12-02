@@ -3,10 +3,8 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     public Transform brick;
-    public Rigidbody brickRB;
     public int radius = 10;
     public int height = 50;
-    private new BoxCollider collider;
 
     void Start()
     {

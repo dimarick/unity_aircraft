@@ -3,11 +3,9 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     public Transform brick;
-    public Rigidbody brickRB;
     public int width = 200;
     public int height = 100;
     public int depth = 10;
-    private new BoxCollider collider;
 
     void Start()
     {
